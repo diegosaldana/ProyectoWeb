@@ -1,0 +1,143 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+
+<link href="{% static 'bootstrap/css/bootstrap.min.css' %}"rel="stylesheet" media="screen">
+<link rel="stylesheet" href="{% static 'bootstrap/css/blog.css' %}">
+<script src="/static/bootstrap/js/jquery-1.12.2.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/bootstrap/js/jquery.js"></script>
+<link rel="stylesheet" href="/static/pure-release-0.6.0/pure-min.css">
+<!-- JAVASCRIPTS -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.backtotop.js' %}"></script>
+<script src="{% static 'js/jquery.mobilemenu.js' %}"></script>
+<!-- IE9 Placeholder Support -->
+<script src="{% static 'js/jquery.placeholder.min.js' %}"></script>
+<!-- / IE9 Placeholder Support -->
+<link rel="stylesheet" type="text/css" media="all" href="{% static 'styles/layout.css' %}"/>
+
+<meta charset="utf-8">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  -->
+
+</head>
+<body id="top">
+{% if user.is_authenticated %}
+<<div class="bgded" style="background-image:url({% static 'media/FondoPrincipal.jpg' %});">
+<div class="wrapper overlay">
+  <header id="header" class="hoc clear">
+        <nav id="mainav" class="clear">
+          <ul class="clear">
+            <li class="active"><a href="{% url 'login' %}">Inicio</a></li>
+            <li><a class="drop" href="#">Comunidad</a>
+              <ul>
+                <li><a href="{% url 'community_list' %}">TODOS LOS USUARIOS</a></li>
+                <li><a href="{% url 'friend_list' %}">MIS AMIGOS</a></li>
+              </ul>
+            </li>
+            <li><a class="drop" href="#">Publicaciones</a>
+              <ul>
+                <li><a href="{% url 'report_publication' %}">TODAS LAS PUBLICACIONES</a></li>
+                <li><a href="{% url 'register_publication' %}">PUBLICAR ALGO NUEVO</a></li>
+              </ul>
+            </li>
+            <li><a class="drop" href="#">{{user.username}}</a>
+              <ul>
+                <li><a href="{% url 'perfil_view' %}">Perfil<img src="{{ get_image_profile }}" width="15px" height="15px"  class="img-circle"></a></li>
+                <li><a href="{% url 'logout' %}">Cerrar sesion</a></li>
+              </ul>
+            </li>
+          </nav>
+
+      <div id="logo">
+              <!-- ################################################################################################ -->
+          <h1><a href="#">Comunidad Universitaria</a></h1>
+          <p>tu principal fuente de tareas e investigaciones comprobadas</p>
+              <!-- ################################################################################################ -->
+      </div>
+    </div>
+{% else %}
+<div class="bgded" style="background-image:url({% static 'media/FondoPrincipal.jpg' %});">
+<div class="wrapper overlay">
+  <header id="header" class="hoc clear">
+        <nav id="mainav" class="clear">
+          <ul class="clear">
+            <li><a href="{% url 'login' %}"> INICIO</a></li>
+            <li><a href="{% url 'signup' %}"> REGISTRARSE</a></li>
+          </ul>
+
+          </nav>
+          <div id="logo">
+            <!-- ################################################################################################ -->
+            <h1><a href="#">Comunidad Universitaria</a></h1>
+            <p>tu principal fuente de tareas e investigaciones comprobadas</p>
+            <!-- ################################################################################################ -->
+          </div>
+  </div>
+
+{% endif %}
+<!-- ################################################################################################ -->
+
+     <div id="pageintro" class="hoc clear">
+       <!-- ################################################################################################ -->
+       <article>
+         <div class="introtxt">
+           <p class="font-xs nospace">Bienvenido a nuestra comunidad de usuarios universitarios</p>
+           <h2 class="heading">Presentacion</h2>
+           <p>En esta pagina encontraras informacion y documentos con respecto a Tareas, Investigaciones, Examenes y mas con su fuente bibliografica verificada y comprobada que no sea plageada de otro sitio.</p>
+         </div>
+         <footer>
+           <ul class="nospace inline pushright">
+           </ul>
+         </footer>
+       </article>
+       <!-- ################################################################################################ -->
+     </div>
+
+
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+
+</body>
+</html>
+{% block content %}
+{% endblock %}
+
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <div class="one_half first">
+      <h6 class="title">Contactanos</h6>
+      <ul class="nospace linklist contact">
+        <li><i class="fa fa-envelope-o"></i>diego.saldana16@tectijuana.edu.mx</li>
+        <li><i class="fa fa-envelope-o"></i>jose.beltran@tectijuana.edu.mx</li>
+        <li><i class="fa fa-envelope-o"></i>edgar.castillo@tectijuana.edu.mx</li>
+      </ul>
+    </div>
+
+    <div class="one_half">
+      <h6 class="title">Escribenos un correo</h6>
+      <p class="btmspace-30">Nos gustaria saber tu opinion respecto al sitio, si cumple o no tus espectativas y en que se puede mejorar</p>
+  <!--    <form method="post" action="#">
+        <fieldset>
+          <legend>Newsletter:</legend>
+          <input class="btmspace-15" type="text" value="" placeholder="Nombre">
+          <input class="btmspace-15" type="text" value="" placeholder="Correo">
+          <input class="btmspace-15" type="text" value="" placeholder="Tu mensaje">
+          <button type="submit" value="submit">Enviar</button>
+        </fieldset>
+      </form>  -->
+    </div>
+
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <p class="fl_left">Copyright &copy; 2017 - Todos los derechos reservados - <a href="#">Comunidad Universitaria</a></p>
+    <p class="fl_right">Materia<a target="_blank" href="http://127.0.0.1:8000/" title=" ">Programacion Web</a></p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>

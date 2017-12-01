@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<h6 >Perfil de usuario</h6>
+{% for item in object_list%}
+<tr>
+	<td><img src="http://127.0.0.1:8000/media/{{item.image}}" width="10%" class="img-circle"></td>
+</tr>
+
+<div class="wrapper row4">
+    <!-- ################################################################################################ -->
+    <div class="one_half">
+      <ul class="nospace linklist contact">
+        <li><i class="fa fa fax"></i>Nombre de usuario:   {{ item.user_perfil }}</li>
+        <li><i class="fa fa fax"></i>Correo electronico:   {{item.email }}</li>
+        <li><i class="fa fa fax"></i>Contraseña: ***** </li>
+				<td><a href="/update_perfil/{{item.pk}}/" role="button" class="btn btn-default">Editar informacion</a>
+      </ul>
+    </div>
+{% endfor %}
+{% endblock %}

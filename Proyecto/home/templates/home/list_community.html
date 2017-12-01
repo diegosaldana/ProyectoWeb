@@ -1,0 +1,28 @@
+{% extends 'home/base.html'%}
+{% block title %}Criticas{% endblock%}
+{% block content %}
+<h2>Comunidad({{number}})</h2>
+
+{% for item in object_list %}
+	{% if item.user_perfil in nofriends %}
+	<tr>
+		<div>
+		  <td><img src="http://127.0.0.1:8000/media/{{item.image}}" width="100px" height="100px" class="img-rounded"></td>
+		  <th>{{ item.user_perfil }}</th>
+		  <th><a  href="/add_friend/{{user_id.pk}}/{{item.pk}}/" role="button" class="btn btn-default">
+		  <span class="glyphicon glyphicon-plus"></span> Agregar amigos</a></th>
+		</div>
+	</tr>
+	{% else %}
+		<tr>
+			 <div>
+		     <td><img src="http://127.0.0.1:8000/media/{{item.image}}" width="100px" height="100px" class="img-rounded"></td>
+		     <th>{{ item.user_perfil }}</th>
+		     <th><a  href="/delete_friend/{{user_id.pk}}/{{item.pk}}/" role="button" class="btn btn-default">
+		     <span class="glyphicon glyphicon-ok"></span> Amigos</a></th>
+			 </div>
+	  </tr>
+	{% endif %}
+{% endfor %}
+
+{% endblock content%}
